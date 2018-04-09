@@ -12,7 +12,7 @@ We will be targeting the learning goals listed in 4.G.4 (Identify angles as acut
 
 ## 2-liner description of the project?
 
-A game to help 4-th graders learn concepts involving angles. 
+A game to help 4th graders learn concepts involving angles. 
 
 ## What will each team member's role be?
 
