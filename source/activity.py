@@ -29,9 +29,28 @@ from sugar3.activity.widgets import TitleEntry
 from sugar3.activity.widgets import StopButton
 from sugar3.activity.widgets import ShareButton
 from sugar3.activity.widgets import DescriptionItem
+from random import randrange
 
 class HelloWorldActivity(activity.Activity):
     """HelloWorldActivity class as specified in activity.info"""
+    angles = { 0: """   ---------------
+    \ 
+     \ 
+      \ 
+       \ 
+        \ """,
+           1: """           ---------------
+           |
+           |
+           |
+           |
+           |""",
+           2: """                   ---------------
+                /
+               /
+              /
+             /
+            /""" }
 
     def __init__(self, handle):
         """Set up the HelloWorld activity."""
@@ -84,7 +103,10 @@ class HelloWorldActivity(activity.Activity):
 
 
         label = Gtk.Label(_("Hello World!"))
-        angle = Gtk.Button(label=_("------------ \n\ \n \ \n  \ "))
+        
+        angle = randrange(0, 3)
+
+        angle = Gtk.Button(self.angles[angle])
         grid.attach(angle ,0, 0, 1, 1)
         acuteBut = Gtk.Button(label=_("Acute Angle"))
         grid.attach(acuteBut, 3, 3, 1, 1)
