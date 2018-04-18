@@ -1,6 +1,6 @@
 [Activity]
-name = anglesPOC
-bundle_id = org.sugarlabs.angles-POC
+name = Angles_V2
+bundle_id = org.sugarlabs.Angles_V2
 icon = activity-helloworld
 exec = sugar-activity activity.HelloWorldActivity
 activity_version = 1
