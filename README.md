@@ -20,9 +20,10 @@ For example:
 ## How to run the POC
 
 * access a device running Sugar
-* using the terminal, clone this repo ``` git clone https://github.com/skimboarder/hfoss-finalproject.git ```
-* navigate to the source directory
-* run the setup script ``` python setup.py dev ```
-* if the AnglesPOC does not appear as a valid Activity, restart your machine and log back in
+* using the terminal, clone this repo ``` git clone https://github.com/skimboarder/hfoss-finalproject.git ~/Activities/TuxExplorer.activity ```
+* Open a new instance of the Develop app (can be found on the Sugar activities website) and select TuxExplorer to edit
+* if the TuxExplorer does not appear as a valid Activity, restart your machine and log back in
+* you may also find it helpful to go to the list view of the installed activities and star Develop, Terminal, and TuxExplorer
+* `git` is pre-installed on the Debian LiveCD of Sugar. You can use `git` like normal
 
 Restarting can be hard... you have to swipe your mouse to the bottom right of the screen and it opens up a navigator style window. In the top right is your user icon. click that and you can restart. 
