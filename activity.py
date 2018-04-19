@@ -20,11 +20,11 @@ class HelloWorldActivity(activity.Activity):
         # Change the following number to change max participants
         self.max_participants = 1
         self.build_toolbar()
-        self.actividad = game.MiJuego()
+        self.activity = game.TuxExplorer()
         self._pygamecanvas = sugargame.canvas.PygameCanvas(self)
         self.set_canvas(self._pygamecanvas)
         self._pygamecanvas.grab_focus()
-        self._pygamecanvas.run_pygame(self.actividad.juego_loop)
+        self._pygamecanvas.run_pygame(self.activity.game_loop)
 
     def read_file(self, file_path):
         pass
