@@ -1,5 +1,12 @@
 # hfoss-finalproject
 
+## Project idea
+Tux is exploring space. Tell him what kind of angle he needs to use to get to the next planet!
+
+## _Planned_ assets
+* [Planets](https://opengameart.org/content/17-planet-sprites)
+* [Tux](https://opengameart.org/content/tux-the-linux-mascot)
+
 ## How to run the POC
 
 * access a device running Sugar
