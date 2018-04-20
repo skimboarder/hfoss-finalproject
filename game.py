@@ -66,8 +66,8 @@ class TuxExplorer():
         clock = pygame.time.Clock()
         screen = pygame.display.get_surface()
         
-        angleDisplay = screen.subsurface((x*.38, y*.3, 500, 500))
-        scoreDisplay = screen.subsurface((x*SCORE_X, y*SCORE_Y, 200, 200))
+        angleDisplay = screen.subsurface((x*.38, y*.3, x - (x*.38), y - (y*.3)))
+        scoreDisplay = screen.subsurface((x*SCORE_X, y*SCORE_Y, x - (x*SCORE_X), y- (y*SCORE_Y)))
         
         angle = Angle(angleDisplay, 150, _ypercent=.3)
         
