@@ -7,6 +7,8 @@ B1_Y = .9
 B2_X = .45
 B2_Y = .9
 
+B3_X = .6
+B3_Y = .9
 
 #menu buttons: start, main, restart
 B4_X = .6

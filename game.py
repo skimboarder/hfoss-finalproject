@@ -25,15 +25,17 @@ class TuxExplorer():
             text = font.render(answer, True, WHITE, BLACK)
             screen.blit(text, (half_x - (x / 10), half_y - (y / 10)))
 			
-			
-		def startGame():
+        def startGame(msg):
+			global state
 			state = GAME
          
-		def loseGame():
-			state = OVER
+        def loseGame(msg):
+            global state
+            state = OVER
 		
-		def mainMenu():
-			statte = MAIN
+        def mainMenu(msg):
+            global state
+            state = MAIN
         pygame.init()
         
         global x, y, font, text, screen
@@ -41,8 +43,8 @@ class TuxExplorer():
         x = gtk.gdk.screen_width()
         y = gtk.gdk.screen_height() - 55
 		
-		half_x = x / 2
-		half_y = y / 2
+        half_x = x / 2
+        half_y = y / 2
 
         pygame.display.set_caption('Angles')
 
@@ -60,21 +62,22 @@ class TuxExplorer():
         obtBut = Button("Obtuse", x*B3_X, y*B3_Y, x*BUT_W, y*BUT_H, screen, saveAnswer)
 		
 		#Game State Stuff
-		startBut = Button("Start", x*B4_X, y*B4_Y, x*BUT_W, y*BUT_H, screen, startGame)
-		mainBut = Button("Main Menu", x*B5_X, y*B5_Y, x*BUT_W, y*BUT_H, screen, mainMenu)
-		restartBut = Button("Restart", x*B6_X, y*B6_Y, x*BUT_W, y*BUT_H, screen, startGame)
+        startBut = Button("Start", x*B4_X, y*B4_Y, x*BUT_W, y*BUT_H, screen, startGame)
+        mainBut = Button("Main Menu", x*B5_X, y*B5_Y, x*BUT_W, y*BUT_H, screen, mainMenu)
+        restartBut = Button("Restart", x*B6_X, y*B6_Y, x*BUT_W, y*BUT_H, screen, startGame)
 		
-		mainText = font.render("Tux Explorer", True, WHITE, BLACK)
-		mainHalfWidth = mainText.get_width() / 2
-		main_xpos = half_x - mainHalfWidth
-		main_ypos = MAIN_Y * y
+        mainText = font.render("Tux Explorer", True, WHITE, BLACK)
+        mainHalfWidth = mainText.get_width() / 2
+        main_xpos = half_x - mainHalfWidth
+        main_ypos = MAIN_Y * y
 		
-		overText = font.render("Game Over!", True, WHITE, BLACK)
-		overHalfWidth = overText.get_width() / 2
-		over_xpos = half_x - overHalfWidth
-		over_ypos = OVER_Y * y
+        overText = font.render("Game Over!", True, WHITE, BLACK)
+        overHalfWidth = overText.get_width() / 2
+        over_xpos = half_x - overHalfWidth
+        over_ypos = OVER_Y * y
 		
-		state = MAIN
+        global state
+        state = MAIN
         
         while 1:
             while gtk.events_pending():
@@ -86,23 +89,22 @@ class TuxExplorer():
                 elif event.type == pygame.VIDEORESIZE:
                     pygame.display.set_mode(event.size, pygame.RESIZABLE)
 
-					
-			if state == MAIN:
-				screen.blit(mainText, (main_xpos, main_ypos))
-				startBut.draw()
+            if state == MAIN:
+                screen.blit(mainText, (main_xpos, main_ypos))
+                startBut.draw()
 				
-			elif state == GAME:
-				acuteBut.draw()
-				rightBut.draw()
-				obtBut.draw()
+            elif state == GAME:
+                acuteBut.draw()
+                rightBut.draw()
+                obtBut.draw()
 				
-				angle.draw()
-				tux.draw()
+                angle.draw()
+                tux.draw()
 			
-			else:
-				screen.blit(overText, (over_xpos, over_ypos))
-				mainBut.draw()
-				restartBut.draw()
+            else:
+                screen.blit(overText, (over_xpos, over_ypos))
+                mainBut.draw()
+                restartBut.draw()
 			
             pygame.display.flip()
 
