@@ -27,3 +27,6 @@ For example:
 * `git` is pre-installed on the Debian LiveCD of Sugar. You can use `git` like normal
 
 Restarting can be hard... you have to swipe your mouse to the bottom right of the screen and it opens up a navigator style window. In the top right is your user icon. click that and you can restart. 
+
+## Useful Documentation
+pygame - https://www.pygame.org/docs/
