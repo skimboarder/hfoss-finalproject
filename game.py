@@ -38,7 +38,11 @@ class TuxExplorer():
         screen = pygame.display.get_surface()
         
         angle = Angle(screen, 150, _ypercent=.3)
-
+        
+        rightBut = Button("Right", B1_X, B1_Y, BUT_W, BUT_H, screen, saveAnswer)
+        acuteBut = Button("Acute", B2_X, B2_Y, BUT_W, BUT_H, screen, saveAnswer)
+        obtBut = Button("Obtuse", B3_X, B3_Y, BUT_W, BUT_H, screen, saveAnswer)
+        
         while 1:
             while gtk.events_pending():
                 gtk.main_iteration()
@@ -49,11 +53,10 @@ class TuxExplorer():
                 elif event.type == pygame.VIDEORESIZE:
                     pygame.display.set_mode(event.size, pygame.RESIZABLE)
 
-            button("Acute", B1_X, B1_Y, BUT_W, BUT_H, screen, saveAnswer)
-            button("Obtuse", B2_X, B2_Y, BUT_W, BUT_H, screen, saveAnswer)
-            button("Right", B3_X, B3_Y, BUT_W, BUT_H, screen, saveAnswer)
-            button("Straight Line", B4_X, B4_Y, BUT_W, BUT_H, screen, saveAnswer)
-  
+            acuteBut.draw()
+            rightBut.draw()
+            obtBut.draw()
+              
             angle.draw()
             
             pygame.display.flip()
