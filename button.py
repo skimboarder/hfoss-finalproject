@@ -10,7 +10,7 @@ class Button():
     
     def __init__(self, msg, x, y, w, h, screen, callback):
         self.msg = msg
-        self.x = x
+        self.x = x 
         self.y = y
         self.w = w
         self.h = h
