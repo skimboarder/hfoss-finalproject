@@ -43,9 +43,9 @@ class TuxExplorer():
         
         tux = Image(TUX_IMAGE, screen)
         
-        rightBut = Button("Right", x*B1_X, y*B1_Y, x*BUT_W, BUT_H, screen, saveAnswer)
-        acuteBut = Button("Acute", x*B2_X, y*B2_Y, x*BUT_W, BUT_H, screen, saveAnswer)
-        obtBut = Button("Obtuse", x*B3_X, y*B3_Y, x*BUT_W, BUT_H, screen, saveAnswer)
+        rightBut = Button("Right", x*B1_X, y*B1_Y, x*BUT_W, y*BUT_H, screen, saveAnswer)
+        acuteBut = Button("Acute", x*B2_X, y*B2_Y, x*BUT_W, y*BUT_H, screen, saveAnswer)
+        obtBut = Button("Obtuse", x*B3_X, y*B3_Y, x*BUT_W, y*BUT_H, screen, saveAnswer)
         
         while 1:
             while gtk.events_pending():

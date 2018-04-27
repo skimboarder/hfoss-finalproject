@@ -1,5 +1,5 @@
-BUT_W = 200
-BUT_H = 100
+BUT_W = .1
+BUT_H = .05
 
 B1_X = .3
 B1_Y = .9
