@@ -7,7 +7,7 @@ line = math.pi
 
 class Angle():
 
-    def randomAngle(self):
+    def randomAngle():
         return (float(randint(1,11))*15.0/180.0*math.pi)
 
     def setAngle(self, _angle):
