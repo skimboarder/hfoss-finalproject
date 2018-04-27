@@ -6,6 +6,8 @@ from pygame.locals import *
 from angles import Angle
 from button import *
 from constants import *
+from images import Image
+import os
 
 import gtk, sys
 
@@ -39,6 +41,8 @@ class TuxExplorer():
         
         angle = Angle(screen, 150, _ypercent=.3)
         
+        tux = Image(TUX_IMAGE, screen)
+        
         rightBut = Button("Right", x*B1_X, y*B1_Y, x*BUT_W, BUT_H, screen, saveAnswer)
         acuteBut = Button("Acute", x*B2_X, y*B2_Y, x*BUT_W, BUT_H, screen, saveAnswer)
         obtBut = Button("Obtuse", x*B3_X, y*B3_Y, x*BUT_W, BUT_H, screen, saveAnswer)
@@ -58,7 +62,7 @@ class TuxExplorer():
             obtBut.draw()
               
             angle.draw()
-            
+            tux.draw()
             pygame.display.flip()
 
             # Try to stay at 30 FPS
