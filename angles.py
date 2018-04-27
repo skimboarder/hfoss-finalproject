@@ -1,10 +1,14 @@
 import pygame
 import math
+from random import randint
 
 rightAngle = math.pi/2
 line = math.pi
 
 class Angle():
+
+    def randomAngle(self):
+        return (float(randint(1,11))*15.0/180.0*math.pi)
 
     def setAngle(self, _angle):
 		ang = -_angle
@@ -13,7 +17,7 @@ class Angle():
 		self.angle = _angle
 		self.top = (ax,ay)
 		
-    def __init__(self, _surface, _length, _color=(96,96,96), _xpercent=.5, _ypercent=.5, _width=6,_angle=rightAngle):
+    def __init__(self, _surface, _length, _color=(96,96,96), _xpercent=.5, _ypercent=.5, _width=6,_angle=randomAngle()):
         self.surface = _surface
         self.length = _length
         self.color = _color
@@ -39,6 +43,3 @@ class Angle():
 		
     def isRight(self):
 		return self.angle == rightAngle
-		
-    def isStraight(self):
-		return self.angle == line
