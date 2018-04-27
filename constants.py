@@ -14,4 +14,4 @@ WHITE = (255, 255, 255)
 BLACK = (0, 0, 0)
 YELLOW = (100, 100, 0)
 
-TUX_IMAGE = "tux_from_linux.png"
+TUX_IMAGE = "tux_single.png"

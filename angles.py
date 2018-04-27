@@ -13,7 +13,7 @@ class Angle():
 		self.angle = _angle
 		self.top = (ax,ay)
 		
-    def __init__(self, _surface, _length, _color=(255,0,0), _xpercent=.5, _ypercent=.5, _width=6,_angle=rightAngle):
+    def __init__(self, _surface, _length, _color=(96,96,96), _xpercent=.5, _ypercent=.5, _width=6,_angle=rightAngle):
         self.surface = _surface
         self.length = _length
         self.color = _color
