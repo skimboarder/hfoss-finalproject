@@ -1,40 +1,27 @@
 import pygame
 import math
+import os
 
 rightAngle = math.pi/2
 line = math.pi
 
 class Image():
 		
-	def setImage(self, path, file):
+	def setImage(self, image):
+	    self.image = pygame.image.load(os.path.join('imgs', image)).convert()
 		
-		
-	def __init__(self, _surface, _path, _fileName, _xpercent=.5, _ypercent=.5, _width=6,_angle=rightAngle):
-		self.surface = _surface
-		self.length = _length
-		self.color = _color
-		self.x = _surface.get_width() * _xpercent
-		self.y = _surface.get_height() * _ypercent
-		self.center = (self.x, self.y)
-		self.bottom = (self.x + self.length, self.y)
-		self.width = _width
-		self.setAngle(_angle)
+	def move(self, x, y):
+	    self.rect = self.rect.move((x,y))
+	    
+	def resize(self, scale):
+	    self.image = pygame.transform.scale(self.image, (int(self.defRect.width*scale), int(self.defRect.height*scale)))
+	    self.rect = self.image.get_rect()
+	    
+	def __init__(self, image, screen):
+	    self.setImage(image)
+	    self.defRect = self.image.get_rect()
+	    self.rect = self.image.get_rect()
+	    self.screen = screen
 		
 	def draw(self):
-		pygame.draw.line(self.surface, self.color,self.center, self.bottom ,self.width)
-		pygame.draw.line(self.surface, self.color,self.center, self.top ,self.width)
-		
-	def getAngle(self):
-		return self.angle
-	
-	def isObtuse(self):
-		return self.angle > rightAngle
-		
-	def isAcute(self):
-		return self.angle < rightAngle
-		
-	def isRight(self):
-		return self.angle == rightAngle
-		
-	def isStraight(self):
-		return self.angle == line
+	    self.screen.blit(self.image,self.rect)
