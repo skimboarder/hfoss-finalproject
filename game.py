@@ -6,6 +6,8 @@ from pygame.locals import *
 from angles import Angle
 from button import *
 from constants import *
+from images import Image
+import os
 
 import gtk, sys
 
@@ -38,6 +40,8 @@ class TuxExplorer():
         screen = pygame.display.get_surface()
         
         angle = Angle(screen, 150, _ypercent=.3)
+        
+        tux = Image(TUX_IMAGE, screen)
 
         while 1:
             while gtk.events_pending():
@@ -55,7 +59,7 @@ class TuxExplorer():
             button("Straight Line", B4_X, B4_Y, BUT_W, BUT_H, screen, saveAnswer)
   
             angle.draw()
-            
+            tux.draw()
             pygame.display.flip()
 
             # Try to stay at 30 FPS

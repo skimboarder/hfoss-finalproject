@@ -1,3 +1,5 @@
+
+
 BUT_W = 200
 BUT_H = 100
 
@@ -16,3 +18,5 @@ B4_Y = 450
 WHITE = (255, 255, 255)
 BLACK = (0, 0, 0)
 YELLOW = (100, 100, 0)
+
+TUX_IMAGE = "tux_from_linux.png"
