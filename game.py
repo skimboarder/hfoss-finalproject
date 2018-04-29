@@ -73,6 +73,7 @@ class TuxExplorer():
         
         tux = Image(TUX_IMAGE, screen)
         tux.move(half_x, half_y)
+        tux.rect.midbottom = tux.rect.topleft
         
         score = ScoreTicker(x, y, scoreDisplay)
         
