@@ -17,14 +17,15 @@ class Button():
         self.screen = screen
         self.callback = callback
 
-    def draw(self):     
+    def draw(self, click):     
         mouse = pygame.mouse.get_pos()
-        click = pygame.mouse.get_pressed()
-    
+        #click = pygame.mouse.get_pressed()
+
+
         if (self.x+self.w > mouse[0] > self.x) and (self.y+self.h > mouse[1] > self.y):
             pygame.draw.rect(self.screen, YELLOW, (self.x,self.y,self.w,self.h))
         
-            if click[0] == 1:
+            if click == 1:
                 self.callback(self.msg)
         else:
             pygame.draw.rect(self.screen, WHITE, (self.x, self.y, self.w, self.h))
