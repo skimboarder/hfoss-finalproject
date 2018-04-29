@@ -23,7 +23,8 @@ B6_Y = .9
 #Text Positions
 MAIN_Y = .1
 OVER_Y = .1
-
+SCORE_X = .05
+SCORE_Y = .05
 #Game states
 MAIN = 0
 GAME = 1
