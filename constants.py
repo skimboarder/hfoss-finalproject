@@ -35,3 +35,6 @@ BLACK = (0, 0, 0)
 YELLOW = (100, 100, 0)
 
 TUX_IMAGE = "tux_single.png"
+PLANET_PREFIX = "planet_"
+PLANET_NUMBER = 21
+PLANET_SUFFIX = ".png"
