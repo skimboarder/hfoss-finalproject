@@ -46,7 +46,8 @@ class TuxExplorer():
 
                 score.increment()
                 angle.setRandomAngle()
-                self.planetNear.image = self.planetFar.image
+                print self.planetNear.image
+                self.planetNear.originalImage = self.planetFar.originalImage
                 self.planetFar = Image(PLANET_PREFIX + str(randint(0, PLANET_NUMBER - 1)) + PLANET_SUFFIX, angleDisplay)
                 putPlanets(self.planetNear, self.planetFar)
 
@@ -77,11 +78,11 @@ class TuxExplorer():
 
         
         def putPlanets(near, far):
-            near.resize(.5)
+            near.setSize(x * NEAR_SIZE,x * NEAR_SIZE)
             near.move(half_x, half_y)
             near.rect.center = near.rect.topleft
 
-            far.resize(.25)
+            far.setSize(x * FAR_SIZE, x * FAR_SIZE)
             far.move(angle.top[0], angle.top[1])
             far.rect.center = far.rect.topleft
 
@@ -103,14 +104,6 @@ class TuxExplorer():
         tux.move(half_x, half_y)
         tux.rect.midbottom = tux.rect.topleft
 		
-
-        #planetNear.resize(.5)
-        #planetNear.move(half_x, half_y)
-        #planetNear.rect.center = planetNear.rect.topleft
-
-        #planetFar.resize(.25)
-        #planetFar.move(angle.top[0], angle.top[1])
-        #planetFar.rect.center = planetFar.rect.topleft
 
 
         putPlanets(self.planetNear, self.planetFar)
@@ -169,7 +162,7 @@ class TuxExplorer():
 
             if state == MAIN:
                 screen.blit(mainText, (main_xpos, main_ypos))
-		screen.blit(helpText1, (help1_xpos, help1_ypos))
+                screen.blit(helpText1, (help1_xpos, help1_ypos))
                 screen.blit(helpText2, (help2_xpos, help2_ypos))
                 startBut.draw(clicked)
 				

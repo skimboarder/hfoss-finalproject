@@ -26,6 +26,7 @@ class Angle():
         self.color = _color
         self.x = _surface.get_width() * _xpercent
         self.y = _surface.get_height() * _ypercent
+        self.arcRect = pygame.Rect(self.x - (_length / 4), self.y - (_length / 4), _length / 2, _length / 2)
         self.center = (self.x, self.y)
         self.bottom = (self.x + self.length, self.y)
         self.width = _width
@@ -34,12 +35,8 @@ class Angle():
     def draw(self):
         pygame.draw.line(self.surface, self.color, self.center, self.bottom, self.width)
         pygame.draw.line(self.surface, self.color, self.center, self.top, self.width)
-        if self.angle < math.pi / 2:
-            arcRectX = self.x + (math.cos(self.angle) * self.length / 4)
-        else:
-            arcRectX = self.x
-        arcRect = pygame.Rect(arcRectX, self.y - (math.sin(self.angle) * self.length / 4), self.length / 4, self.length / 4)
-        pygame.draw.arc(self.surface, self.color, arcRect, 0, self.angle, self.width)
+        
+        pygame.draw.arc(self.surface, self.color, self.arcRect, 0, self.angle, self.width)
 		
     def getAngle(self):
         return self.angle
