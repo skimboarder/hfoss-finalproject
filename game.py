@@ -169,7 +169,7 @@ class TuxExplorer():
 
             if state == MAIN:
                 screen.blit(mainText, (main_xpos, main_ypos))
-		screen.blit(helpText1, (help1_xpos, help1_ypos))
+                screen.blit(helpText1, (help1_xpos, help1_ypos))
                 screen.blit(helpText2, (help2_xpos, help2_ypos))
                 startBut.draw(clicked)
 				

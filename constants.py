@@ -11,13 +11,13 @@ B3_X = .6
 B3_Y = .9
 
 #menu buttons: start, main, restart
-B4_X = .6
+B4_X = .5
 B4_Y = .9
 
-B5_X = .6
-B5_Y = .9
+B5_X = .5
+B5_Y = .8
 
-B6_X = .6
+B6_X = .5
 B6_Y = .9
 
 #Text Positions
