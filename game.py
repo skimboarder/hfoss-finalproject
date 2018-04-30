@@ -56,7 +56,7 @@ class TuxExplorer():
         def putPlanets(near, far):
             near.move(half_x, y)
             near.rect.center = near.rect.topleft
-            near.scale(3)
+            near.resize(3)
             far.move(angle.top[0], angle.top[1])
             far.rect.center = far.rect.topleft
         
