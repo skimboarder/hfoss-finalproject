@@ -28,7 +28,9 @@ class TuxExplorer():
                 print('correct')
                 score.increment()
                 angle.setRandomAngle()
-
+                planetNear = planetFar
+                planetFar = Image(PLANET_PREFIX + str(randint(0, PLANET_NUMBER - 1)) + PLANET_SUFFIX, screen)
+                putPlanets(planetNear, planetFar)
 
             else:
                 print('wrong')
@@ -49,6 +51,15 @@ class TuxExplorer():
         def mainMenu(msg):
             global state
             state = MAIN
+        
+        def putPlanets(near, far);
+            near.move(half_x, y)
+            near.rect.center = near.rect.topleft
+            near.scale(3)
+            far.move(angle.top[0], angle.top[1])
+            far.rect.center = far.rect.topleft
+        
+        
         pygame.init()
         
 
@@ -74,6 +85,10 @@ class TuxExplorer():
         tux = Image(TUX_IMAGE, screen)
         tux.move(half_x, half_y)
         tux.rect.midbottom = tux.rect.topleft
+		
+        planetNear = Image(PLANET_PREFIX + str(randint(0, PLANET_NUMBER - 1)) + PLANET_SUFFIX, screen)
+        planetFar = Image(PLANET_PREFIX + str(randint(0, PLANET_NUMBER - 1)) + PLANET_SUFFIX, screen)
+        putPlanets(planetNear, planetFar)
         
         score = ScoreTicker(x, y, scoreDisplay)
         
