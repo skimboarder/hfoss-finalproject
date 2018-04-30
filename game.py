@@ -140,9 +140,10 @@ class TuxExplorer():
 
                 score.draw()
                 
-				
                 angle.draw()
+                planetNear.draw()
                 tux.draw()
+                planetFar.draw()
 			
             else:
                 screen.fill(BLACK)
