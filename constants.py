@@ -25,6 +25,9 @@ MAIN_Y = .1
 OVER_Y = .1
 SCORE_X = .05
 SCORE_Y = .05
+HSCORE_Y = .075
+HELP1_Y = .3
+HELP2_Y = .4
 #Game states
 MAIN = 0
 GAME = 1
