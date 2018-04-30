@@ -28,6 +28,11 @@ SCORE_Y = .05
 HSCORE_Y = .075
 HELP1_Y = .3
 HELP2_Y = .4
+
+
+#planet size
+NEAR_SIZE = .13
+FAR_SIZE = .05
 #Game states
 MAIN = 0
 GAME = 1
