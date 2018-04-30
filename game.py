@@ -52,7 +52,7 @@ class TuxExplorer():
             global state
             state = MAIN
         
-        def putPlanets(near, far);
+        def putPlanets(near, far):
             near.move(half_x, y)
             near.rect.center = near.rect.topleft
             near.scale(3)
