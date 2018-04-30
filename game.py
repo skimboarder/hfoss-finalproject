@@ -31,7 +31,7 @@ class TuxExplorer():
         screen = pygame.display.get_surface()
         angleDisplay = screen.subsurface((x*.18, y*.1, x - (2*x*.18), y - (2*y*.1)))
         self.planetNear = Image(PLANET_PREFIX + str(randint(0, PLANET_NUMBER - 1)) + PLANET_SUFFIX, screen)
-        self.planetFar = Image(PLANET_PREFIX + str(randint(0, PLANET_NUMBER - 1)) + PLANET_SUFFIX, screen)
+        self.planetFar = Image(PLANET_PREFIX + str(randint(0, PLANET_NUMBER - 1)) + PLANET_SUFFIX, angleDisplay)
         # This is what a clicked button will call. so handle an answer here
         def saveAnswer(answer):
             # fill with black to wipe the screen. Otherwise the answer labels stack on each other
@@ -43,7 +43,7 @@ class TuxExplorer():
                 score.increment()
                 angle.setRandomAngle()
                 self.planetNear.image = self.planetFar.image
-                self.planetFar = Image(PLANET_PREFIX + str(randint(0, PLANET_NUMBER - 1)) + PLANET_SUFFIX, screen)
+                self.planetFar = Image(PLANET_PREFIX + str(randint(0, PLANET_NUMBER - 1)) + PLANET_SUFFIX, angleDisplay)
                 putPlanets(self.planetNear, self.planetFar)
 
             else:
