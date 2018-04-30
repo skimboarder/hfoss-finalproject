@@ -39,7 +39,6 @@ class Angle():
         else:
             arcRectX = self.x
         arcRect = Rect(arcRectX, self.y - (math.sin(self.angle) * self.length / 4), self.length / 4, self.length / 4)
-        arcRect.
         pygame.draw.arc(self.surface, self.color, arcRect, 0, self.angle, self.width)
 		
     def getAngle(self):
