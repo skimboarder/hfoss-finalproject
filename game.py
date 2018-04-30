@@ -20,18 +20,31 @@ class TuxExplorer():
     def game_loop(self):
     
         global x, y, font, text, screen
+        pygame.init()
+
+        x = gtk.gdk.screen_width()
+        y = gtk.gdk.screen_height() - 55
+		
+        half_x = x / 2
+        half_y = y / 2
         
+        screen = pygame.display.get_surface()
+        angleDisplay = screen.subsurface((x*.18, y*.1, x - (2*x*.18), y - (2*y*.1)))
+        self.planetNear = Image(PLANET_PREFIX + str(randint(0, PLANET_NUMBER - 1)) + PLANET_SUFFIX, screen)
+        self.planetFar = Image(PLANET_PREFIX + str(randint(0, PLANET_NUMBER - 1)) + PLANET_SUFFIX, screen)
         # This is what a clicked button will call. so handle an answer here
         def saveAnswer(answer):
             # fill with black to wipe the screen. Otherwise the answer labels stack on each other
             # We wont need this when we are not outputting the answer. 
             if(angle.checkAnswer(answer)):
                 print('correct')
+
+
                 score.increment()
                 angle.setRandomAngle()
-                planetNear = planetFar
-                planetFar = Image(PLANET_PREFIX + str(randint(0, PLANET_NUMBER - 1)) + PLANET_SUFFIX, screen)
-                putPlanets(planetNear, planetFar)
+                self.planetNear.image = self.planetFar.image
+                self.planetFar = Image(PLANET_PREFIX + str(randint(0, PLANET_NUMBER - 1)) + PLANET_SUFFIX, screen)
+                putPlanets(self.planetNear, self.planetFar)
 
             else:
                 print('wrong')
@@ -53,33 +66,30 @@ class TuxExplorer():
             global state
             state = MAIN
         
+
+        
+
+        
+
+        
         def putPlanets(near, far):
-            near.move(half_x, y)
+            near.resize(.5)
+            near.move(half_x, half_y)
             near.rect.center = near.rect.topleft
-            near.resize(1)
+
+            far.resize(.25)
             far.move(angle.top[0], angle.top[1])
             far.rect.center = far.rect.topleft
-            far.resize(.25)
-        
-        
-        pygame.init()
-        
 
-
-        x = gtk.gdk.screen_width()
-        y = gtk.gdk.screen_height() - 55
-		
-        half_x = x / 2
-        half_y = y / 2
-
+        
         pygame.display.set_caption('Angles')
 
         font = pygame.font.SysFont(None, 48)
 
         clock = pygame.time.Clock()
-        screen = pygame.display.get_surface()
+
         
-        angleDisplay = screen.subsurface((x*.18, y*.1, x - (2*x*.18), y - (2*y*.1)))
+
         scoreDisplay = screen.subsurface((x*SCORE_X, y*SCORE_Y, x - (x*SCORE_X), y- (y*SCORE_Y)))
         
         angle = Angle(angleDisplay, 150, _ypercent=.3)
@@ -88,9 +98,18 @@ class TuxExplorer():
         tux.move(half_x, half_y)
         tux.rect.midbottom = tux.rect.topleft
 		
-        planetNear = Image(PLANET_PREFIX + str(randint(0, PLANET_NUMBER - 1)) + PLANET_SUFFIX, screen)
-        planetFar = Image(PLANET_PREFIX + str(randint(0, PLANET_NUMBER - 1)) + PLANET_SUFFIX, screen)
-        putPlanets(planetNear, planetFar)
+
+        #planetNear.resize(.5)
+        #planetNear.move(half_x, half_y)
+        #planetNear.rect.center = planetNear.rect.topleft
+
+        #planetFar.resize(.25)
+        #planetFar.move(angle.top[0], angle.top[1])
+        #planetFar.rect.center = planetFar.rect.topleft
+
+
+        putPlanets(self.planetNear, self.planetFar)
+
         
         score = ScoreTicker(x, y, scoreDisplay)
         
@@ -142,9 +161,9 @@ class TuxExplorer():
                 score.draw()
                 
                 angle.draw()
-                planetNear.draw()
+                self.planetNear.draw()
                 tux.draw()
-                planetFar.draw()
+                self.planetFar.draw()
 			
             else:
                 screen.fill(BLACK)
