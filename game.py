@@ -20,6 +20,10 @@ class TuxExplorer():
     def game_loop(self):
     
         global x, y, font, text, screen
+	
+	def clear():
+            screen.fill(BLACK)
+	
         pygame.init()
 
         x = gtk.gdk.screen_width()
@@ -85,6 +89,7 @@ class TuxExplorer():
         pygame.display.set_caption('Angles')
 
         font = pygame.font.SysFont(None, 48)
+        smallFont = pygame.font.SysFont(None, 30)
 
         clock = pygame.time.Clock()
 
@@ -112,6 +117,9 @@ class TuxExplorer():
 
         
         score = ScoreTicker(x, y, scoreDisplay)
+	
+        but_half = (x*BUT_W / 2)
+
         
         rightBut = Button("Right", x*B1_X, y*B1_Y, x*BUT_W, y*BUT_H, screen, saveAnswer)
         acuteBut = Button("Acute", x*B2_X, y*B2_Y, x*BUT_W, y*BUT_H, screen, saveAnswer)
@@ -126,6 +134,14 @@ class TuxExplorer():
         mainHalfWidth = mainText.get_width() / 2
         main_xpos = half_x - mainHalfWidth
         main_ypos = MAIN_Y * y
+		
+        helpText1 = smallFont.render("Tux is lost! Help him navigate through space.", True, WHITE, BLACK)
+        help1_xpos = half_x - (helpText1.get_width() / 2)
+        help1_ypos = HELP1_Y * y
+        
+        helpText2 = smallFont.render("Tell him if his angle to the next planet is accute, obtuse, or right.", True, WHITE, BLACK)
+        help2_xpos = half_x - (helpText2.get_width() / 2)
+        help2_ypos = HELP2_Y * y
 		
         overText = font.render("Game Over!", True, WHITE, BLACK)
         overHalfWidth = overText.get_width() / 2
@@ -143,6 +159,8 @@ class TuxExplorer():
             for event in pygame.event.get():
                 if event.type == pygame.QUIT:
                     # Change "Juego Finalizado" to change the exit message (log)
+                    score.saveScore()
+
                     exit("Game Finalized")
                 elif event.type == pygame.VIDEORESIZE:
                     pygame.display.set_mode(event.size, pygame.RESIZABLE)
@@ -151,6 +169,8 @@ class TuxExplorer():
 
             if state == MAIN:
                 screen.blit(mainText, (main_xpos, main_ypos))
+		screen.blit(helpText1, (help1_xpos, help1_ypos))
+                screen.blit(helpText2, (help2_xpos, help2_ypos))
                 startBut.draw(clicked)
 				
             elif state == GAME:
