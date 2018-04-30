@@ -63,4 +63,3 @@ class ScoreTicker():
                 print('saving score')
             except Exception as e:
                 print('error' + str(e))
-        

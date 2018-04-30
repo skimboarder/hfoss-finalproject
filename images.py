@@ -11,11 +11,13 @@ class Image():
 	    self.image = pygame.image.load(os.path.join('imgs', image)).convert()
 		
 	def move(self, x, y):
+	    print('moving' + str(x) + ', ' + str(y))
 	    self.rect = self.rect.move((x,y))
 	    
 	def resize(self, scale):
 	    self.image = pygame.transform.scale(self.image, (int(self.defRect.width*scale), int(self.defRect.height*scale)))
 	    self.rect = self.image.get_rect()
+	    self.defRect = pygame.Rect(self.rect[0], self.rect[1], self.defRect.height, self.defRect.width)
 	    
 	def __init__(self, image, screen):
 	    self.setImage(image)
@@ -25,3 +27,4 @@ class Image():
 		
 	def draw(self):
 	    self.screen.blit(self.image,self.rect)
+	   

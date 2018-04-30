@@ -8,6 +8,7 @@ from button import *
 from constants import *
 from images import Image
 from score import ScoreTicker
+from random import randint
 import os
 
 import gtk, sys
@@ -19,19 +20,35 @@ class TuxExplorer():
     def game_loop(self):
     
         global x, y, font, text, screen
-        
-        def clear():
+	
+	def clear():
             screen.fill(BLACK)
+	
+        pygame.init()
+
+        x = gtk.gdk.screen_width()
+        y = gtk.gdk.screen_height() - 55
+		
+        half_x = x / 2
+        half_y = y / 2
         
+        screen = pygame.display.get_surface()
+        angleDisplay = screen.subsurface((x*.18, y*.1, x - (2*x*.18), y - (2*y*.1)))
+        self.planetNear = Image(PLANET_PREFIX + str(randint(0, PLANET_NUMBER - 1)) + PLANET_SUFFIX, screen)
+        self.planetFar = Image(PLANET_PREFIX + str(randint(0, PLANET_NUMBER - 1)) + PLANET_SUFFIX, angleDisplay)
         # This is what a clicked button will call. so handle an answer here
         def saveAnswer(answer):
             # fill with black to wipe the screen. Otherwise the answer labels stack on each other
             # We wont need this when we are not outputting the answer. 
             if(angle.checkAnswer(answer)):
                 print('correct')
+
+
                 score.increment()
                 angle.setRandomAngle()
-
+                self.planetNear.image = self.planetFar.image
+                self.planetFar = Image(PLANET_PREFIX + str(randint(0, PLANET_NUMBER - 1)) + PLANET_SUFFIX, angleDisplay)
+                putPlanets(self.planetNear, self.planetFar)
 
             else:
                 print('wrong')
@@ -43,46 +60,66 @@ class TuxExplorer():
         def startGame(msg):
 			global state
 			state = GAME
-			clear()
+			screen.fill(BLACK)
             
         def loseGame(msg):
             global state
             state = OVER
-            clear()
-		
+	    clear()
         def mainMenu(msg):
             global state
             state = MAIN
             clear()
-        pygame.init()
+
         
 
+        
 
-        x = gtk.gdk.screen_width()
-        y = gtk.gdk.screen_height() - 55
-		
-        half_x = x / 2
-        half_y = y / 2
+        
+        def putPlanets(near, far):
+            near.resize(.5)
+            near.move(half_x, half_y)
+            near.rect.center = near.rect.topleft
 
+            far.resize(.25)
+            far.move(angle.top[0], angle.top[1])
+            far.rect.center = far.rect.topleft
+
+        
         pygame.display.set_caption('Angles')
 
         font = pygame.font.SysFont(None, 48)
         smallFont = pygame.font.SysFont(None, 30)
 
         clock = pygame.time.Clock()
-        screen = pygame.display.get_surface()
+
         
-        angleDisplay = screen.subsurface((x*.38, y*.3, x - (x*.38), y - (y*.3)))
+
         scoreDisplay = screen.subsurface((x*SCORE_X, y*SCORE_Y, x - (x*SCORE_X), y- (y*SCORE_Y)))
         
         angle = Angle(angleDisplay, 150, _ypercent=.3)
         
         tux = Image(TUX_IMAGE, screen)
         tux.move(half_x, half_y)
+        tux.rect.midbottom = tux.rect.topleft
+		
+
+        #planetNear.resize(.5)
+        #planetNear.move(half_x, half_y)
+        #planetNear.rect.center = planetNear.rect.topleft
+
+        #planetFar.resize(.25)
+        #planetFar.move(angle.top[0], angle.top[1])
+        #planetFar.rect.center = planetFar.rect.topleft
+
+
+        putPlanets(self.planetNear, self.planetFar)
+
         
         score = ScoreTicker(x, y, scoreDisplay)
-        
+	
         but_half = (x*BUT_W / 2)
+
         
         rightBut = Button("Right", x*B1_X, y*B1_Y, x*BUT_W, y*BUT_H, screen, saveAnswer)
         acuteBut = Button("Acute", x*B2_X, y*B2_Y, x*BUT_W, y*BUT_H, screen, saveAnswer)
@@ -123,6 +160,7 @@ class TuxExplorer():
                 if event.type == pygame.QUIT:
                     # Change "Juego Finalizado" to change the exit message (log)
                     score.saveScore()
+
                     exit("Game Finalized")
                 elif event.type == pygame.VIDEORESIZE:
                     pygame.display.set_mode(event.size, pygame.RESIZABLE)
@@ -131,10 +169,10 @@ class TuxExplorer():
 
             if state == MAIN:
                 screen.blit(mainText, (main_xpos, main_ypos))
-                screen.blit(helpText1, (help1_xpos, help1_ypos))
+		screen.blit(helpText1, (help1_xpos, help1_ypos))
                 screen.blit(helpText2, (help2_xpos, help2_ypos))
                 startBut.draw(clicked)
-
+				
             elif state == GAME:
                 obtBut.draw(clicked)
                 acuteBut.draw(clicked)
@@ -142,9 +180,10 @@ class TuxExplorer():
 
                 score.draw()
                 
-				
                 angle.draw()
+                self.planetNear.draw()
                 tux.draw()
+                self.planetFar.draw()
 			
             else:
                 screen.fill(BLACK)
