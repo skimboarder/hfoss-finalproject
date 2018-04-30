@@ -122,6 +122,7 @@ class TuxExplorer():
             for event in pygame.event.get():
                 if event.type == pygame.QUIT:
                     # Change "Juego Finalizado" to change the exit message (log)
+                    score.saveScore()
                     exit("Game Finalized")
                 elif event.type == pygame.VIDEORESIZE:
                     pygame.display.set_mode(event.size, pygame.RESIZABLE)
@@ -133,7 +134,7 @@ class TuxExplorer():
                 screen.blit(helpText1, (help1_xpos, help1_ypos))
                 screen.blit(helpText2, (help2_xpos, help2_ypos))
                 startBut.draw(clicked)
-				
+
             elif state == GAME:
                 obtBut.draw(clicked)
                 acuteBut.draw(clicked)
