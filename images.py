@@ -8,7 +8,7 @@ line = math.pi
 class Image():
 		
 	def setImage(self, image):
-	    self.image = pygame.image.load(os.path.join('imgs', image)).convert()
+	    self.image = pygame.image.load(os.path.join('imgs', image)).convert_alpha()
 	    self.originalImage = self.image
 		
 	def move(self, x, y):

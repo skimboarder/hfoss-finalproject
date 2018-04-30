@@ -132,7 +132,7 @@ class TuxExplorer():
         help1_xpos = half_x - (helpText1.get_width() / 2)
         help1_ypos = HELP1_Y * y
         
-        helpText2 = smallFont.render("Tell him if his angle to the next planet is accute, obtuse, or right.", True, WHITE, BLACK)
+        helpText2 = smallFont.render("Tell him if his angle to the next planet is acute, obtuse, or right.", True, WHITE, BLACK)
         help2_xpos = half_x - (helpText2.get_width() / 2)
         help2_ypos = HELP2_Y * y
 		
