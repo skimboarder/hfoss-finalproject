@@ -1,6 +1,6 @@
 [Activity]
-name = TuxExplorer
-bundle_id = org.sugarlabs.TuxExplorer
+name = Angles_V2
+bundle_id = org.sugarlabs.Angles_V2
 icon = activity-helloworld
 exec = sugar-activity activity.HelloWorldActivity
 activity_version = 1
