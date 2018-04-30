@@ -8,6 +8,7 @@ from button import *
 from constants import *
 from images import Image
 from score import ScoreTicker
+from random import randint
 import os
 
 import gtk, sys
