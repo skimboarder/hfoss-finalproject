@@ -13,9 +13,9 @@ For example:
    T--
 ```
 
-## _Planned_ assets
-* [Planets](https://opengameart.org/content/17-planet-sprites)
-* [Tux](https://opengameart.org/content/tux-the-linux-mascot)
+## Assets used
+* [Planets](https://opengameart.org/content/17-planet-sprites) under CC-BY-SA 3.0
+* [Tux](https://opengameart.org/content/tux-the-linux-mascot) under CC-BY-SA 3.0
 
 ## How to run the POC
 
