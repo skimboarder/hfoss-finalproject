@@ -65,11 +65,11 @@ class TuxExplorer():
         def loseGame(msg):
             global state
             state = OVER
-		
+	    clear()
         def mainMenu(msg):
             global state
             state = MAIN
-        
+            clear()
 
         
 
