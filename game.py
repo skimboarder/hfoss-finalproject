@@ -126,9 +126,9 @@ class TuxExplorer():
         obtBut = Button("Obtuse", x*B3_X, y*B3_Y, x*BUT_W, y*BUT_H, screen, saveAnswer)
 		
 		#Game State Stuff
-        startBut = Button("Start", x*B4_X, y*B4_Y, x*BUT_W, y*BUT_H, screen, startGame)
-        mainBut = Button("Main Menu", x*B5_X, y*B5_Y, x*BUT_W, y*BUT_H, screen, mainMenu)
-        restartBut = Button("Restart", x*B6_X, y*B6_Y, x*BUT_W, y*BUT_H, screen, startGame)
+        startBut = Button("Start", (x*B4_X) - but_half, y*B4_Y, x*BUT_W, y*BUT_H, screen, startGame)
+        mainBut = Button("Menu", (x*B5_X) - but_half, y*B5_Y, x*BUT_W, y*BUT_H, screen, mainMenu)
+        restartBut = Button("Restart", (x*B6_X) - but_half, y*B6_Y, x*BUT_W, y*BUT_H, screen, startGame)
 		
         mainText = font.render("Tux Explorer", True, WHITE, BLACK)
         mainHalfWidth = mainText.get_width() / 2
